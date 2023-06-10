@@ -50,8 +50,8 @@ mutation EditEntry($entryId: ID!, $editEntryEntryTitle: String!, $editEntryEntry
 `;
 
 export const REMOVE_ENTRY = gql`
-mutation RemoveEntry($removeEntryEntryId2: ID!) {
-  removeEntry(entryId: $removeEntryEntryId2) {
+mutation RemoveEntry($removeEntryEntryId: ID!) {
+  removeEntry(entryId: $removeEntryEntryId) {
     _id
   }
 }
