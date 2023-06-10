@@ -2,17 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 
 import { useQuery, useMutation } from "@apollo/client";
-import { gql } from "@apollo/client";
 import "../../App";
 import { QUERY_ME } from '../../utils/queries';
 import { REMOVE_ENTRY, ADD_ENTRY } from "../../utils/mutations";
-import CreateNote from "./CreateNote";
 import Auth from '../../utils/auth';
 
 
 const Notes = () => {
   const { loading, data } = useQuery(QUERY_ME);
-  const [addEntry, { error }] = useMutation(ADD_ENTRY);
+  const [addEntry] = useMutation(ADD_ENTRY);
+  const [removeEntry] = useMutation(REMOVE_ENTRY);
 
   const [formState, setFormState] = useState({ entryTitle: '', entryContent: '' });
   const [userData, setUserData] = useState({});
@@ -26,23 +25,25 @@ const Notes = () => {
     }
   }, [data]);
 
-
-  console.log (userData.entries);
-  console.log("userData", userData);
-
-  const [removeEntry] = useMutation(REMOVE_ENTRY);
-
   const handleDelete = async (entryId) => {
+    console.log(userData)
+
     try {
-      const { data } = await removeEntry({
-        variables: { removeEntryEntryId: entryId }
+      await removeEntry({
+          variables: { entryId: entryId },
       });
-      // Handle success (e.g., show a message)
-      console.log(data);
-    } catch (err) {
-      // Handle error (e.g., show an error message)
-      console.error(err);
+
+      setUserData((userData) => ({
+          ...userData,
+          entries: userData.entries.filter((entry) => {
+              return entry._id !== entryId;
+          }),
+      }));
+
+    } catch (e) {
+        console.error(e);
     }
+
   };
 
   if (!userData || !userData.username) {
@@ -51,6 +52,7 @@ const Notes = () => {
         You need to be logged in to see this. Use the navigation links above to sign up or log in!
       </h4>
     );
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
