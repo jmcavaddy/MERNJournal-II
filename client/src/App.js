@@ -12,7 +12,12 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Navbar from "./components/Navbar/index.js";
+
+import Notes from "./components/pages/index.js";
+import CreateNotes from "./components/pages/CreateNote.js";
+
 import Main from "./components/Main/index.js";
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -41,11 +46,14 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Navbar />} />
-          <Route path='/homepage' element={<Main />} />
+
+          <Route path='/homepage' element={<Notes />} />
+
           {/* <Route 
                 path="/entry/:entryId"
                 element={<SingleThought />}
               /> */}
+
         </Routes>
       </Router>
     </ApolloProvider>
