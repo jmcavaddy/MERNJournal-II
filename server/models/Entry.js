@@ -23,7 +23,7 @@ const entrySchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-  }
+  },
 });
 
 const Entry = model('Entry', entrySchema);
