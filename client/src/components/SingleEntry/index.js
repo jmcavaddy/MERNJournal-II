@@ -1,5 +1,5 @@
 // File that will render a single note and edit/delete functionality
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from "@apollo/client";
 
@@ -10,13 +10,20 @@ import { EDIT_ENTRY } from "../../utils/mutations";
 const SingleEntry = () => {
     const { entryId } = useParams();
     const [formState, setFormState] = useState({ entryTitle: '', entryContent: ''});
+    const [editEntry] = useMutation(EDIT_ENTRY);
 
-    const { loading, data } = useQuery( QUERY_SINGLE_ENTRY, {
+    const { loading, data } = useQuery(QUERY_SINGLE_ENTRY, {
         variables: { entryId: entryId },
     });
 
-    console.log(data);
-    
+    useEffect(() => {
+        if (data) {
+            setFormState({
+                entryTitle: data.entry.entryTitle,
+                entryContent: data.entry.entryContent,
+            });
+        }
+    }, [data]);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
