@@ -6,13 +6,7 @@ import { gql, useMutation } from "@apollo/client";
 // This following is dead code. import { loginUser } from '../utils/API';
 import Auth from "../../utils/auth";
 
-const LOGIN_USER = gql`
-  mutation login($username: String!, $password: String!) {
-    login(username: $username, password: $password) {
-      token
-    }
-  }
-`;
+import { LOGIN } from '../../utils/mutations';
 
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({
@@ -21,13 +15,12 @@ const LoginForm = () => {
   });
   const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [login, { error, data }] = useMutation(LOGIN);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
   };
-
-  const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -42,32 +35,19 @@ const LoginForm = () => {
     setValidated(true);
 
     try {
-      // const response = await loginUser(userFormData);
-
-      // if (!response.ok) {
-      //   throw new Error('something went wrong!');
-      // }
-
-      // const { token, user } = await response.json();
-      // console.log(user);
-      // Auth.login(token);
       const { data } = await login({
         variables: { ...userFormData },
       });
 
       Auth.login(data.login.token);
 
-      setUserFormData({ username: "", password: "" });
+     
     } catch (err) {
       console.error(err);
       setShowAlert(true);
     }
 
-    // setUserFormData({
-    //   username: '',
-    //   email: '',
-    //   password: '',
-    // });
+    setUserFormData({ username: "", password: "" });
   };
 
   return (
