@@ -42,10 +42,10 @@ function App() {
         <Routes>
           <Route path='/' element={<Navbar />} />
           <Route path='/homepage' element={<Main />} />
-          <Route 
+          {/* <Route 
                 path="/entry/:entryId"
                 element={<SingleThought />}
-              />
+              /> */}
         </Routes>
       </Router>
     </ApolloProvider>
