@@ -33,6 +33,19 @@ export const QUERY_SINGLE_PROFILE = gql`
   }
 `;
 
+export const QUERY_SINGLE_ENTRY = gql`
+  query Entry($entryId: ID!) {
+    entry(entryId: $entryId) {
+      _id
+      createdAt
+      entryAuthor
+      entryContent
+      entryTitle
+    }
+  }
+`;
+
+
 export const QUERY_ME = gql`
 query Me {
   me {

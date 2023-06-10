@@ -19,7 +19,11 @@ const resolvers = {
         entries: async (parent, { username }) => {
             const params = username ? { username } : {};
             return Entry.find(params).sort({ createdAt: -1 });
+        },
+        entry: async (parent, { entryId }) => {
+          return Entry.findOne({ _id: entryId });
         }
+
     },
     Mutation: {
         addProfile: async (parent, { username, password }) => {
