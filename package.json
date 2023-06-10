@@ -16,7 +16,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.15",
-    "graphql": "^16.6.0"
+    "graphql": "^16.6.0",
+    "react-router": "^6.12.1"
   },
   "repository": {
     "type": "git",

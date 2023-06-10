@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 
@@ -6,6 +7,7 @@ import "../../App";
 import { QUERY_ME } from '../../utils/queries';
 import { REMOVE_ENTRY, ADD_ENTRY } from "../../utils/mutations";
 import Auth from '../../utils/auth';
+import background from "../../assets/robo1.jpg";
 
 const Notes = () => {
   const { loading, data } = useQuery(QUERY_ME);
@@ -87,6 +89,7 @@ const Notes = () => {
   }
 
   return (
+    <div style={{ backgroundImage: `url(${background})`, height: "100vh",}}>
     <div className="container">
       <div className="row justify-content">
         <div className="col-md-10">
@@ -161,6 +164,7 @@ const Notes = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
