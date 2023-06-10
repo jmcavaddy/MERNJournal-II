@@ -7,7 +7,6 @@ import { QUERY_ME } from '../../utils/queries';
 import { REMOVE_ENTRY, ADD_ENTRY } from "../../utils/mutations";
 import Auth from '../../utils/auth';
 
-
 const Notes = () => {
   const { loading, data } = useQuery(QUERY_ME);
   const [addEntry] = useMutation(ADD_ENTRY);
@@ -16,14 +15,20 @@ const Notes = () => {
   const [formState, setFormState] = useState({ entryTitle: '', entryContent: '' });
   const [userData, setUserData] = useState({});
 
-   // use this to determine if `useEffect()` hook needs to run again
-   const userDataLength = Object.keys(userData).length;
+  // use this to determine if `useEffect()` hook needs to run again
+  const userDataLength = Object.keys(userData).length;
 
   useEffect(() => {
     if (data) {
       setUserData(data.me);
     }
   }, [data]);
+
+
+  console.log (userData.entries);
+  console.log("userData", userData);
+
+  const [removeEntry] = useMutation(REMOVE_ENTRY);
 
   const handleDelete = async (entryId) => {
     console.log(userData)
@@ -32,16 +37,11 @@ const Notes = () => {
       await removeEntry({
           variables: { entryId: entryId },
       });
-
-      setUserData((userData) => ({
-          ...userData,
-          entries: userData.entries.filter((entry) => {
-              return entry._id !== entryId;
-          }),
-      }));
-
-    } catch (e) {
-        console.error(e);
+      // Handle success (e.g., show a message)
+      console.log(data);
+    } catch (err) {
+      // Handle error (e.g., show an error message)
+      console.error(err);
     }
 
   };
@@ -52,7 +52,6 @@ const Notes = () => {
         You need to be logged in to see this. Use the navigation links above to sign up or log in!
       </h4>
     );
-  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -62,12 +61,11 @@ const Notes = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-
     try {
       const { data } = await addEntry({
         variables: { ...formState },
       });
- 
+
       setUserData((userData) => ({
         ...userData,
         entries: [...userData.entries, data.addEntry],
@@ -157,7 +155,7 @@ const Notes = () => {
                     </Card>
                   );
                 })}
-              </div>
+ </div>
             </div>
           </div>
         </div>
