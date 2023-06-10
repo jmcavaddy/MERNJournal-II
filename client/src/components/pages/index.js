@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from '@apollo/client';
 import "../../App";
 import { QUERY_ME } from '../../utils/queries';
-import CreateNote from "./CreateNote";
+import { ADD_ENTRY } from "../../utils/mutations";
 
 
 const Notes = () => {
   const { loading, data } = useQuery(QUERY_ME);
+  const [addEntry, { error }] = useMutation(ADD_ENTRY);
 
+  const [formState, setFormState] = useState({ entryTitle: '', entryContent: '' });
   const [userData, setUserData] = useState({});
 
-  // use this to determine if `useEffect()` hook needs to run again
-  const userDataLength = Object.keys(userData).length;
+   // use this to determine if `useEffect()` hook needs to run again
+   const userDataLength = Object.keys(userData).length;
 
   useEffect(() => {
       if (data) {
@@ -20,18 +22,37 @@ const Notes = () => {
       }
   }, [data]);
 
-  // if data isn't here yet, say so
-  if (!userDataLength) {
-    return <h2>LOADING...</h2>;
-  }
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({ ...formState, [name]: value });
+  };
 
-  if (!userData?.username) {
-    return (
-      <h4>
-        You need to be logged in to see this. Use the navigation links above to
-        sign up or log in!
-      </h4>
-    );
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+
+    try {
+      const { data } = await addEntry({
+        variables: { ...formState },
+      });
+ 
+      setUserData((userData) => ({
+        ...userData,
+        entries: [...userData.entries, data.addEntry],
+      }));
+
+      setFormState({
+        entryTitle: '',
+        entryContent: '',
+      });
+
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  if (!userDataLength) {
+    return <div>Loading...</div>;
   }
 
   return (
@@ -40,7 +61,48 @@ const Notes = () => {
         <div className="col-md-10">
           <div>
             <h1 className="my-4 text-center">My Entries</h1>
-            <CreateNote />
+            <form
+              style={{
+                border: "2px solid blue",
+                borderRadius: "10px",
+                padding: "30px",
+              }}
+              onSubmit={handleFormSubmit}
+              >
+              <div className="mb-3">
+                <label htmlFor="Title" className="form-label">
+                  Entry Title
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="title"
+                  aria-describedby="titleHelp"
+                  placeholder="Entry Title"
+                  onChange={handleInputChange}
+                  name='entryTitle'
+                  value={formState.entryTitle}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="Note" className="form-label">
+                  Entry
+                </label>
+                <textarea
+                  type="text"
+                  className="form-control"
+                  id="Note"
+                  placeholder="Entry Content"
+                  onChange={handleInputChange}
+                  name='entryContent'
+                  value={formState.entryContent}
+                ></textarea>
+              </div>
+
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
+            </form>
             <div>
               <div className="my-4 mynotes row">
                 {userData.entries.map((entry) => {

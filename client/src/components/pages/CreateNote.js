@@ -10,6 +10,9 @@ const CreateNote = () => {
   const [formState, setFormState] = useState({ entryTitle: '', entryContent: '' });
   const [userData, setUserData] = useState({});
 
+  // use this to determine if `useEffect()` hook needs to run again
+  const userDataLength = Object.keys(userData).length;
+
   useEffect(() => {
       if (data) {
         setUserData(data.me);
@@ -62,8 +65,7 @@ const CreateNote = () => {
       padding: "30px",
     }}
     onSubmit={handleFormSubmit}
-
-  >
+    >
     <div className="mb-3">
       <label htmlFor="Title" className="form-label">
         Entry Title

@@ -14,9 +14,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar/index.js";
 
 import Notes from "./components/pages/index.js";
-import CreateNotes from "./components/pages/CreateNote.js";
-
-import Main from "./components/Main/index.js";
 
 
 const httpLink = createHttpLink({
@@ -46,7 +43,6 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Navbar />} />
-
           <Route path='/homepage' element={<Notes />} />
 
           {/* <Route 
