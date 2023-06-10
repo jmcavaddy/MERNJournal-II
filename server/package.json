@@ -1,12 +1,12 @@
 {
-    "name": "MERNJournal2",
+    "name": "MERNJournal",
     "version": "1.0.0",
     "description": "",
     "main": "server.js",
     "scripts": {
         "start": "node server.js",
-        "watch": "nodemon server.js",
-        "seed": "node seeders/seed.js"
+        "watch": "nodemon server.js"
+        
     },
     "keywords": [],
     "author": "",
