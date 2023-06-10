@@ -12,7 +12,7 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Navbar from "./components/Navbar/index.js";
-
+import SingleEntry from "./components/SingleEntry/index.js";
 import Notes from "./components/pages/index.js";
 
 
@@ -45,10 +45,10 @@ function App() {
           <Route path='/' element={<Navbar />} />
           <Route path='/homepage' element={<Notes />} />
 
-          {/* <Route 
+          <Route 
                 path="/entry/:entryId"
-                element={<SingleThought />}
-              /> */}
+                element={<SingleEntry />}
+              />
 
         </Routes>
       </Router>

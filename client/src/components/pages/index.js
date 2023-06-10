@@ -150,13 +150,13 @@ const Notes = () => {
                         <Card.Text>
                           {entry.entryContent}
                         </Card.Text>
-                        <Card.Link href="#">Edit</Card.Link>
+                        <Card.Link href={`/entry/${entry._id}`}>Edit</Card.Link>
                         <Card.Link href="#" onClick={() => handleDelete(entry._id)}>Delete</Card.Link>
                       </Card.Body>
                     </Card>
                   );
                 })}
- </div>
+              </div>
             </div>
           </div>
         </div>
