@@ -1,48 +1,58 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { QUERY_SINGLE_PROFILE } from "../../utils/queries";
 import { ADD_ENTRY } from "../../utils/mutations";
+import { QUERY_ME } from '../../utils/queries';
 
 const CreateNote = () => {
-  const { loading, data } = useQuery(QUERY_SINGLE_PROFILE);
+  const [addEntry, { error }] = useMutation(ADD_ENTRY);
+  const { loading, data } = useQuery(QUERY_ME);
+  
+  const [formState, setFormState] = useState({ entryTitle: '', entryContent: '' });
+  const [userData, setUserData] = useState({});
 
-  const techList = data?.profile || [];
-
-  const [formData, setFormData] = useState({
-    entryTitle: '',
-    entryContent: '',
-    entryAuthor: ''
-  });
-
-  let navigate = useNavigate();
-
-  const [createNote, { error }] = useMutation(ADD_ENTRY);
+  useEffect(() => {
+      if (data) {
+        setUserData(data.me);
+      }
+  }, [data]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    setFormState({ ...formState, [name]: value });
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+
     try {
-      const { data } = await createNote({
-        variables: { ...formData },
+      const { data } = await addEntry({
+        variables: { ...formState },
       });
 
-      navigate(`/homepage/${data.createNote._id}`);
-    } catch (err) {
-      console.error(err);
-    }
+      console.log(data);
 
-    setFormData({
+      console.log(userData);
+
+      setUserData((userData) => ({
+        ...userData,
+        entries: [...userData.entries, data.addEntry],
+      }));
+
+      console.log(userData);
+
+      setFormState({
         entryTitle: '',
         entryContent: '',
-        entryAuthor: ''
-    });
+      });
+
+    } catch (e) {
+      console.error(e);
+    }
+
+    window.location.reload();
   };
+
 
   return (
     <form
@@ -51,28 +61,34 @@ const CreateNote = () => {
       borderRadius: "10px",
       padding: "30px",
     }}
+    onSubmit={handleFormSubmit}
+
   >
     <div className="mb-3">
       <label htmlFor="Title" className="form-label">
-        Note's title
+        Entry Title
       </label>
       <input
         type="text"
         className="form-control"
         id="title"
         aria-describedby="titleHelp"
-        placeholder="Note Title"
+        placeholder="Entry Title"
+        onChange={handleInputChange}
+        name='entryTitle'
       />
     </div>
     <div className="mb-3">
-      <label for="Note" className="form-label">
-        Note
+      <label htmlFor="Note" className="form-label">
+        Entry
       </label>
       <textarea
         type="text"
         className="form-control"
         id="Note"
-        placeholder="Enter your Note"
+        placeholder="Entry Content"
+        onChange={handleInputChange}
+        name='entryContent'
       ></textarea>
     </div>
 
