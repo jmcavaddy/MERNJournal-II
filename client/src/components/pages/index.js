@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
-import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_SINGLE_PROFILE } from "../../utils/queries";
+import { useQuery } from "@apollo/client";
 import "../../App";
-import Navbar from "../Navbar";
-import { ADD_ENTRY } from "../../utils/mutations";
 import { QUERY_ME } from '../../utils/queries';
 import CreateNote from "./CreateNote";
 
@@ -42,7 +39,7 @@ const Notes = () => {
       <div className="row justify-content">
         <div className="col-md-10">
           <div>
-            <h1 className="my-4 text-center">My Notes</h1>
+            <h1 className="my-4 text-center">My Entries</h1>
             <CreateNote />
             <div>
               <div className="my-4 mynotes row">
