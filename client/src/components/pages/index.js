@@ -25,11 +25,6 @@ const Notes = () => {
   }, [data]);
 
 
-  console.log (userData.entries);
-  console.log("userData", userData);
-
-  const [removeEntry] = useMutation(REMOVE_ENTRY);
-
   const handleDelete = async (entryId) => {
     console.log(userData)
 
@@ -37,10 +32,15 @@ const Notes = () => {
       await removeEntry({
           variables: { entryId: entryId },
       });
-      // Handle success (e.g., show a message)
-      console.log(data);
+
+      setUserData((userData) => ({
+        ...userData,
+        entries: userData.entries.filter((entry) => {
+        return entry._id !== entryId;
+        }),
+      }));
+
     } catch (err) {
-      // Handle error (e.g., show an error message)
       console.error(err);
     }
 
@@ -52,6 +52,7 @@ const Notes = () => {
         You need to be logged in to see this. Use the navigation links above to sign up or log in!
       </h4>
     );
+  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
