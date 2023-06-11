@@ -90,7 +90,8 @@ import background from "../../assets/robo1.jpg";
   }
 
   return (
-    <div style={{ backgroundImage: `url(${background})`, height: "100vh",}}>
+    <div style={{ background: `linear-gradient(
+      to left, rgba(255,0,0,0), rgba(13,62,51,0.35)),url(${background})`, height: "100%", width: "100%",}}>
     <div className="container">
       <div className="row justify-content">
         <div className="col-md-10">
@@ -98,17 +99,19 @@ import background from "../../assets/robo1.jpg";
             <button style={{ float: "right" }} onClick={Auth.logout}>Logout</button>
           </div>
           <div>
-            <h1 className="my-4 text-center">My Entries</h1>
+            <h1 className="my-4 text-center"style={{ color: "white" }}>My Entries</h1>
             <form
               style={{
                 border: "2px solid blue",
                 borderRadius: "10px",
                 padding: "30px",
+                fontWeight: "bold",
+                
               }}
               onSubmit={handleFormSubmit}
               >
               <div className="mb-3">
-                <label htmlFor="Title" className="form-label">
+                <label htmlFor="Title" className="form-label" style={{ color: "white" }}>
                   Entry Title
                 </label>
                 <input
@@ -123,7 +126,7 @@ import background from "../../assets/robo1.jpg";
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="Note" className="form-label">
+                <label htmlFor="Note" className="form-label" style={{ color: "white" }}>
                   Entry
                 </label>
                 <textarea
@@ -145,7 +148,7 @@ import background from "../../assets/robo1.jpg";
               <div className="my-4 mynotes row">
                 {userData.entries.map((entry) => {
                   return (
-                    <Card key={entry._id} className="card mx-2" style={{ width: "18rem" }}>
+                      <Card key={entry._id} className="card mx-2" style={{ width: "18rem", backgroundColor: "lavender", padding: "5px", margin: "5px" }}>
                       <Card.Body>
                         <Card.Title>{entry.entryTitle}</Card.Title>
                         <Card.Subtitle className="mb-1 text-muted">
