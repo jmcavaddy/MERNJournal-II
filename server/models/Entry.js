@@ -1,11 +1,8 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat.js');
+
 
 const entrySchema = new Schema({
-  
-  // _id: {
-  //   type: String,
-  //   required: true
-  // },
   entryTitle: {
     type: String,
     required: 'Your entry needs a title!',
@@ -22,8 +19,14 @@ const entrySchema = new Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now,
-  },
+    default: Date.now(),
+    get: (timestamp) => dateFormat(timestamp),
+  }
+},
+{
+  toJSON: {
+    getters: true
+  }
 });
 
 const Entry = model('Entry', entrySchema);
