@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import LoginForm from '../LoginForm/index';
 import SignupForm from '../SignupForm/index';
-
+import Notes from '../pages/index';
 import Auth from '../../utils/auth.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Navbar.css';
@@ -13,6 +13,11 @@ import defaultImage from '../../assets/display2.gif';
 const AppNavbar = () => {
   const [showModal, setShowModal] = useState(false);
   const [image, setImage] = useState(null);
+
+  const navigate = useNavigate();	
+  const handleAddNotesClick = () => {	
+    navigate('/homepage');	
+  };
 
   return (
     <>
@@ -25,7 +30,10 @@ const AppNavbar = () => {
           <Navbar.Collapse id="navbar" className="justify-content-end">
             <Nav>
               {Auth.loggedIn() ? (
-                <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                <>	
+                <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>	
+                <Nav.Link onClick={handleAddNotesClick}>Add Entry</Nav.Link>	
+              </>
               ) : (
                 <Nav.Link onClick={() => setShowModal(true)}>Login / Sign Up</Nav.Link>
               )}

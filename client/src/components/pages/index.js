@@ -9,7 +9,7 @@ import { REMOVE_ENTRY, ADD_ENTRY } from "../../utils/mutations";
 import Auth from '../../utils/auth';
 import background from "../../assets/robo1.jpg";
 
-const Notes = () => {
+  const Notes = () => {
   const { loading, data } = useQuery(QUERY_ME);
   const [addEntry] = useMutation(ADD_ENTRY);
   const [removeEntry] = useMutation(REMOVE_ENTRY);
@@ -65,8 +65,9 @@ const Notes = () => {
     event.preventDefault();
 
     try {
+
       const { data } = await addEntry({
-        variables: { ...formState },
+        variables: { ...formState },	
       });
 
       setUserData((userData) => ({
@@ -147,8 +148,8 @@ const Notes = () => {
                     <Card key={entry._id} className="card mx-2" style={{ width: "18rem" }}>
                       <Card.Body>
                         <Card.Title>{entry.entryTitle}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">
-                          {entry.createdAt}
+                        <Card.Subtitle className="mb-1 text-muted">
+                        {entry.createdAt}
                         </Card.Subtitle>
                         <Card.Text>
                           {entry.entryContent}
