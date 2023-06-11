@@ -50,7 +50,17 @@ THEN the new note I have entered is saved and appears
 WHEN I click on an existing note
 THEN the same note appears elsewhere on the page
 ```
+## Technologies used
 
+This project is built on MERN stack. Major technologies used are:
+* MongoDB
+* Express
+* React
+* Node Js
+* Graphql
+* JWT
+* CSS
+* bootstrap
 
 ## Installation 
 
