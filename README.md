@@ -19,6 +19,15 @@ Walkthough Video -
 
 MERNJournal is a fullstack note-taking application created by [ruchiagarwal26](https://github.com/ruchiagarwal26), [jmcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321),  [Harrison Zussman](https://github.com/HarrisonZussman), and [William Hirst](https://github.com/FreeWill201) with the end goal being a refined, refactored note taking application that is an improvement on our previous note taker applications.
 
+Login/SignUp page :
+
+![image](https://github.com/jmcavaddy/MERNJournal-II/assets/115508901/8fb5935b-c30d-4a84-ac00-b97b99e38c5d)
+
+Entry page:
+
+![image](https://github.com/jmcavaddy/MERNJournal-II/assets/115508901/56074934-13e2-4d2a-a4b4-944d4638811b)
+
+
 USER STORY 
 ```
 GIVEN a MERN based note-taking application
