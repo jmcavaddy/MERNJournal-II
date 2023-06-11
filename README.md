@@ -67,6 +67,19 @@ npm run develop
 
 A useful note-taking application designed for the user to be able to create their own profile and keep track of specific notes that they deem important. This is made with students in mind along with all other professions that require the ability to save important information to be referenced later. 
 
+## Future Development
+
+```
+Capabilities to add profile pictures and other bookmarks to Notes
+
+Seamless connection between multiple devices and platforms of using MERNJournal
+
+Implement google's ‘speech to text’ API https://cloud.google.com/speech-to-text
+
+Advanced Search and Filters: Enhance the search functionality by adding advanced filters, such as date ranges, tags, or specific notebook sections. 
+
+```
+
 ## License 
   
 This Project is licensed under the MIT license.
