@@ -18,11 +18,7 @@ Upgrade to MERNJournal and unlock a world of limitless possibilities!
 - [Contributors](#contributors)
 - [Questions](#questions)
 
-
 [Heroku](https://gentle-chamber-06355.herokuapp.com/)
-
-
-Walkthough Video -
 
 MERNJournal is a fullstack note-taking application created by [ruchiagarwal26](https://github.com/ruchiagarwal26), [jmcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321),  [Harrison Zussman](https://github.com/HarrisonZussman), and [William Hirst](https://github.com/FreeWill201) with the end goal being a refined, refactored note taking application that is an improvement on our previous note taker applications.
 
@@ -108,14 +104,6 @@ Contributions welcome please message a contributor below.
 ## Contributors
 
 [ruchi](https://github.com/ruchiagarwal26), [John Mcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321), [Harrison Zussman](https://github.com/HarrisonZussman), [William Hirst](https://github.com/FreeWill201)
-
-<!-- 
-## Tests
-To perform tests run the following command: 
-```
-npm test
-```
--->
 
 ## Questions
 
