@@ -2,6 +2,12 @@
 
 ![licenseBadge](https://img.shields.io/badge/License-MIT-red)
 
+Introducing MERNJournal!  
+The ultimate note-taking application designed to revolutionize the way you capture, organize, and recall your thoughts! 
+Take control of your thoughts, enhance your productivity, and unleash your creativity with the power of MERNJournal!
+Don't settle for ordinary note-taking apps -
+Upgrade to MERNJournal and unlock a world of limitless possibilities!
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
@@ -13,7 +19,8 @@
 - [Questions](#questions)
 
 
-Heroku -
+[Heroku](https://gentle-chamber-06355.herokuapp.com/)
+
 
 Walkthough Video -
 
