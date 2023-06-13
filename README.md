@@ -2,6 +2,12 @@
 
 ![licenseBadge](https://img.shields.io/badge/License-MIT-red)
 
+Introducing MERNJournal!  
+The ultimate note-taking application designed to revolutionize the way you capture, organize, and recall your thoughts! 
+Take control of your thoughts, enhance your productivity, and unleash your creativity with the power of MERNJournal!
+Don't settle for ordinary note-taking apps -
+Upgrade to MERNJournal and unlock a world of limitless possibilities!
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
@@ -12,10 +18,7 @@
 - [Contributors](#contributors)
 - [Questions](#questions)
 
-
-Heroku -
-
-Walkthough Video -
+[Heroku](https://gentle-chamber-06355.herokuapp.com/)
 
 MERNJournal is a fullstack note-taking application created by [ruchiagarwal26](https://github.com/ruchiagarwal26), [jmcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321),  [Harrison Zussman](https://github.com/HarrisonZussman), and [William Hirst](https://github.com/FreeWill201) with the end goal being a refined, refactored note taking application that is an improvement on our previous note taker applications.
 
@@ -101,14 +104,6 @@ Contributions welcome please message a contributor below.
 ## Contributors
 
 [ruchi](https://github.com/ruchiagarwal26), [John Mcavaddy](https://github.com/jmcavaddy), [Olloyd](https://github.com/Olloyd321), [Harrison Zussman](https://github.com/HarrisonZussman), [William Hirst](https://github.com/FreeWill201)
-
-<!-- 
-## Tests
-To perform tests run the following command: 
-```
-npm test
-```
--->
 
 ## Questions
 
