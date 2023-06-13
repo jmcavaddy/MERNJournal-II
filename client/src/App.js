@@ -42,8 +42,8 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Routes>
-          <Route exact path='/' element={<Navbar />} />
-          <Route exact path='/homepage' element={<Notes />} />
+          <Route path='/' element={<Navbar />} />
+          <Route path='/homepage' element={<Notes />} />
 
           <Route 
                 path="/entry/:entryId"
