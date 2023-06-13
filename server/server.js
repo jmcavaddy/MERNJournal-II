@@ -23,8 +23,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //giving access to everything in build folder, consolidated on client side
-if (process.env.Node_ENV === 'production'){
-  app.use(express.static(path.join(__dirname,'../client/build/index.html')))
+if (process.env.NODE_ENV === 'production'){
+  app.use(express.static(path.join(__dirname,'../client/build/')))
 }
 
 app.get('/',(req,res) => {
