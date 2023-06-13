@@ -14,12 +14,6 @@
   "devDependencies": {
     "concurrently": "^5.3.0"
   },
-  "dependencies": {
-    "@apollo/client": "^3.7.15",
-    "date-fns": "^2.30.0",
-    "graphql": "^16.6.0",
-    "react-router": "^6.12.1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Olloyd321/Group-4-Temp.git"
