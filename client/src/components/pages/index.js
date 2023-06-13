@@ -91,7 +91,7 @@ import background from "../../images/robo1.jpg";
 
   return (
     <div style={{ background: `linear-gradient(
-      to left, rgba(255,0,0,0), rgba(13,62,51,0.35)),url(${background})`, height: "100%", width: "100%",}}>
+      to left, rgba(255,0,0,0), rgba(13,62,51,0.35)),url(${background})`, height: "100vh", width: "100%",}}>
     <div className="container">
       <div className="row justify-content">
         <div className="col-md-10">
