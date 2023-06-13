@@ -8,7 +8,7 @@ import Notes from '../pages/index';
 import Auth from '../../utils/auth.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Navbar.css';
-import defaultImage from '../../assets/display2.gif';
+import defaultImage from '../../images/display2.gif';
 
 const AppNavbar = () => {
   const [showModal, setShowModal] = useState(false);
