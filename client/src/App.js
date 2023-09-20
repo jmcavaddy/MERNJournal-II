@@ -1,6 +1,3 @@
-import logo from './logo.svg';
-import './App.css';
-
 import React from 'react';
 import {
   ApolloClient,
@@ -10,10 +7,12 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Navbar from "./components/Navbar/index.js";
-import SingleEntry from "./components/SingleEntry/index.js";
-import Notes from "./components/pages/index.js";
+import LandingPage from "./pages/LandingPage/index.js";
+import SingleEntry from "./pages/SingleEntry/index.js";
+import Profile from "./pages/Profile/index.js";
+import NewEntry from "./pages/NewEntry/index.js";
 
 
 const httpLink = createHttpLink({
@@ -42,14 +41,14 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Routes>
-          <Route path='/' element={<Navbar />} />
-          <Route path='/homepage' element={<Notes />} />
-
+          <Route path='/' element={<LandingPage />} />
+          <Route path='/homepage' element={<Profile />} />
           <Route 
                 path="/entry/:entryId"
                 element={<SingleEntry />}
               />
-
+          <Route path='/newentry' element={<NewEntry />} />
+          <Route path='*' element={<LandingPage />} />
         </Routes>
       </Router>
     </ApolloProvider>
